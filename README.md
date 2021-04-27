@@ -45,7 +45,6 @@ application
 | |____server
 | |____usecase
 |____pkg
-|____service
 |____go.mod
 |____go.sum
 |____LICENSE
