@@ -39,11 +39,14 @@ application
 | |____conf
 | |____domain
 | | |____entity
+| | |____event
 | | |____repository
 | | |____service
 | |____infra
 | |____server
 | |____usecase
+| | |____event
+| | |____service
 |____pkg
 |____go.mod
 |____go.sum
