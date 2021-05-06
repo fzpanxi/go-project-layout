@@ -4,9 +4,16 @@ import (
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"os"
+	"time"
 )
 
 type Conf struct {
+	Server struct {
+		Http struct {
+			Addr    string
+			Timeout time.Duration
+		}
+	}
 	Data struct {
 		Database struct {
 			Driver  string

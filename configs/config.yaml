@@ -1,6 +1,10 @@
+server:
+  http:
+    addr: 0.0.0.0:8866
+    timeout: 1s
 data:
   database:
     driver: mysql
-    dsn: root:aa123456@tcp(192.168.0.21:3306)/d_teatok_app?parseTime=True
+    dsn: root:aa123456@tcp(192.168.0.21:3306)/d_teatok_app?parseTime=True&loc=Local
     max_idle: 10
     max_open: 100

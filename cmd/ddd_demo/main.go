@@ -1,29 +1,32 @@
 package main
 
 import (
-	"context"
 	config "ddd_demo/internal/conf"
-	"log"
+	"net/http"
 )
 
+type App struct {
+	hs *http.Server
+}
+
+func newApp(hs *http.Server) *App {
+	return &App{
+		hs: hs,
+	}
+}
+func (app *App) Start() {
+	app.hs.ListenAndServe()
+}
 func main() {
-	//data, cleanup, err := infra.NewData()
-	//if err != nil {
-	//	panic(err)
-	//}
-	//defer cleanup()
-	//userRepo := infra.NewUserRepo(data)
-	//userService := service.NewUserService(userRepo)
-	//userUseCase := application.NewUserUseCase(userService)
 	bc, err := config.LoadConfig("./configs/config.yaml")
 	if err != nil {
 		panic(err)
 	}
-	userUseCase, cleanup, err := initApp(bc)
+	app, cleanup, err := initApp(bc)
 	if err != nil {
 		panic(err)
 	}
 	defer cleanup()
-
-	log.Println(userUseCase.GetUser(context.Background(), 0))
+	app.Start()
+	//log.Println(userUseCase.GetUser(context.Background(), 0))
 }
